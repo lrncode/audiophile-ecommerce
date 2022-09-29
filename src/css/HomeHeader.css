@@ -1,0 +1,41 @@
+.home-header{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.header-image-mobile{
+    width: 100%;
+}
+
+.header-image-tablet{
+}
+
+.header-image-desktop{
+}
+
+.header-text{
+    position: absolute;
+    color: var(--clr-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+    top:25%;
+    text-align: center; 
+}
+
+.header-text-muted{
+    color: var(--clr-white-transparent);
+    margin-bottom:0;
+}
+
+.header-name{
+    width: min(90% , 400px);
+}
+
+.header-btn{
+    position: absolute;
+    top:75%;
+}

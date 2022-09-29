@@ -1,0 +1,14 @@
+.zx7{
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.zx7-text{
+    position: absolute;
+    padding: 2.8rem 2.4rem;
+
+}
+
+.zx7-image{
+    border-radius: var(--border-radius);
+}

@@ -1,0 +1,13 @@
+.yx1{
+    background-color: var(--clr-light);
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius);
+}
+
+.yx1-text{
+    padding: 2.5rem;
+}
+
+.yx1-image{
+    border-radius: var(--border-radius);
+}

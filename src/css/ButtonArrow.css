@@ -1,0 +1,17 @@
+.button-arrow{
+    color: var(--clr-black-transparent);
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    transition: var(--button-transition);
+}
+
+.button-arrow-icon{
+    width: .5rem;
+}
+
+.button-arrow:hover{
+    color: var(--clr-accent-muted);
+}

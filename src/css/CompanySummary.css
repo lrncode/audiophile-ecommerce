@@ -1,0 +1,18 @@
+.company-summary{
+    padding-top: 7rem;
+    text-align: center;
+    padding-bottom: 7rem;
+}
+
+.company-summary-image{
+    border-radius: var(--border-radius);
+}
+
+.company-summary p {
+    width: 90%;
+    color: var(--clr-black-transparent);
+}
+
+.company-summary h2{
+    width: 80%;
+}

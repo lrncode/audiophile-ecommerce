@@ -1,0 +1,10 @@
+.nav{
+    padding: 2rem 2rem;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1001;
+    border-bottom: 1px solid var(--clr-gray-transparent);
+}

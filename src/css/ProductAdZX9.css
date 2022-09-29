@@ -1,0 +1,44 @@
+.product-ad-square{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+    background-color: var(--clr-accent);
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    margin-top: 7rem;
+    color:var(--clr-very-light);
+    overflow: hidden;
+
+}
+
+.image-product-ad-square{    
+    width: 50%;
+}
+
+.circles-pattern{
+    position: absolute;
+    z-index: 0;
+    top:-4%;
+    scale: 1.6;
+}
+
+.image-product-ad-square{
+    z-index: 2;
+}
+
+.button-ad-square{
+    z-index: 2;
+}
+
+.product-ad-square-name{
+    width: 200px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.product-ad-square-description{
+    margin-bottom: 2rem;
+}

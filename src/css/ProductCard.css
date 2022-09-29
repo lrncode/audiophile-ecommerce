@@ -1,0 +1,22 @@
+.product-card{
+    text-align: center;
+    margin-bottom: 9rem;
+}
+
+h6 + .product-card-name{
+    margin-top: 0;
+}
+
+.product-card-name{
+    width: 10rem;
+}
+
+.product-card-description{
+    color: var(--clr-black-transparent);
+    margin-bottom: 1.5rem;
+}
+
+.product-card-image{
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+}
