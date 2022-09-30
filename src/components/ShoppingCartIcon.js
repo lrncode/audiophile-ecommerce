@@ -4,11 +4,11 @@ import { usePopUp } from '../context/PopUpContext'
 
 export default function ShoppingCartIcon() {
 
-  const {toggleCheckoutWindow} = usePopUp()
+  const {toggleCheckoutWindow,showCheckoutForm,showSuccessfulOrderWindow} = usePopUp()
 
   return (
-    <div>
+    <button disabled={showCheckoutForm || showSuccessfulOrderWindow}>
       <img onClick={toggleCheckoutWindow} src={shoppingCartIcon} alt='shopping cart icon' />
-    </div>
+    </button>
   )
 }

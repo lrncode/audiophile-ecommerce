@@ -45,7 +45,17 @@ export default function PopUpProvider({children}){
     }
 
     return(
-        <popUpContext.Provider value={{backToHome,toggleSuccessfulOrderWindow,toggleCheckoutForm,toggleCheckoutWindow,toggleMobileMenu,showMobileMenu,showCheckoutWindow,showCheckoutForm,showSuccessfulOrderWindow}}>
+        <popUpContext.Provider value={{
+                        backToHome,
+                        toggleSuccessfulOrderWindow,
+                        toggleCheckoutForm,
+                        toggleCheckoutWindow,
+                        toggleMobileMenu,
+                        showMobileMenu,
+                        showCheckoutWindow,
+                        showCheckoutForm,
+                        showSuccessfulOrderWindow
+                        }}>
             {children}
         </popUpContext.Provider>
     )

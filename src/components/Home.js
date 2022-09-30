@@ -8,7 +8,7 @@ import ProdyctAdYX1 from './ProdyctAdYX1'
 export default function Home() {
   return (
     <>
-    <HomeHeader />
+    <HomeHeader/>
     <div className='container'>
         <CategoryList />
         <ProductAdZX9 />

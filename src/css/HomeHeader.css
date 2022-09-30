@@ -5,14 +5,8 @@
     align-items: center; 
 }
 
-.header-image-mobile{
-    width: 100%;
-}
-
-.header-image-tablet{
-}
-
-.header-image-desktop{
+.header-description{
+    display: none;
 }
 
 .header-text{
@@ -38,4 +32,13 @@
 .header-btn{
     position: absolute;
     top:75%;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+
+@media (min-width:768px){
+    .header-description{
+        display: block;
+    }
 }

@@ -12,6 +12,19 @@
     align-items: stretch;
 }
 
+.checkout-form-label{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.checkout-form-label > * {
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: .5rem;
+}
+
 .checkout-field{
     display: flex;
     flex-direction: column;
@@ -27,11 +40,25 @@ input{
     outline-style: none;
     border-style:solid;
     border:1px solid rgb(210, 210, 210);
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+input:focus{
+    border-color: var(--clr-accent);
+}
+
+.input-error{
+    border-color: red;
+}
+
+.error-text{
+    color: red;
+    font-weight: 400;
 }
 
 label{
     font-weight: 500;
-    margin-bottom: .5rem;
 }
 
 fieldset{

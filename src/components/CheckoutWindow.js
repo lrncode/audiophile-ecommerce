@@ -19,8 +19,8 @@ export default function CheckoutWindow() {
 
 
     function checkout(){
-
-    }
+        if(shoppingCartProducts.length === 0) return
+        toggleCheckoutForm()    }
 
   return (
     ReactDOM.createPortal(
@@ -36,7 +36,7 @@ export default function CheckoutWindow() {
                     <h6 className='color-gray subtitle checkout-total'>total</h6>
                     <h6>{formatCurrency(totalPrice)}</h6>
                 </section>
-                <button onClick={toggleCheckoutForm} className='btn-accent'>checkout</button>
+                <button onClick={checkout} className='btn-accent'>checkout</button>
             </div>
         </>,
         document.getElementById('checkout-window')
