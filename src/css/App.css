@@ -53,7 +53,17 @@ a,a:visited,a:focus,a:active{
   border-radius: var(--border-radius);
 }
 
+.border-rounded{
+  border-radius: var(--border-radius);
+}
 
+.border-accent{
+  border-color: var(--clr-accent);
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
 
 button{
   cursor: pointer;

@@ -7,8 +7,8 @@ export default function ReccomendedList({product}) {
     <div className='reccomended-list text-center'>
         <h3>you may also like</h3>
       <div className='reccomended-list-container'>
-          {product.others.map(reccomendedProduct => {
-            return <ReccomendedProduct reccomendedProduct={reccomendedProduct} category={product.category}/>
+          {product.others.map((reccomendedProduct,index) => {
+            return <ReccomendedProduct key={index} reccomendedProduct={reccomendedProduct} category={product.category}/>
           })}
       </div>
     </div>

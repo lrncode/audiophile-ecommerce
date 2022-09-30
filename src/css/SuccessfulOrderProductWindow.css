@@ -1,0 +1,38 @@
+.successful-order-product-window{
+    display: flex;
+    flex-direction:column;
+}
+
+
+
+.successful-order-product-first{
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.successful-order-top{
+    background-color: var(--clr-light);
+    padding: 0 1rem;
+    border-top-left-radius: .6rem;
+    border-top-right-radius: .6rem;
+}
+
+.successful-order-bottom{
+    background-color: var(--clr-primary);
+    padding: .5rem 1rem;
+    border-bottom-left-radius: .6rem;
+    border-bottom-right-radius: .6rem;
+}
+
+.successful-order-grand-total,
+.successful-order-price{
+    margin: 1rem 0;
+}
+
+.successful-order-grand-total{
+    color: var(--clr-white-transparent);
+    font-weight: 400;
+}
+
+.successful-order-price{
+    color: var(--clr-white);
+}

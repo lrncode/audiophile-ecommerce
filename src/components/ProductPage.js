@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link , useParams } from 'react-router-dom'
+import { Link , useParams , useNavigate } from 'react-router-dom'
 import { formatCurrency } from '../utilities/formatCurrency'
 import { useProductData } from '../context/ProductDataContext'
 import PageNotFound from './PageNotFound'
@@ -8,11 +8,12 @@ import ProductImageGallery from './ProductImageGallery'
 import ReccomendedList from './ReccomendedList'
 import CategoryList from './CategoryList'
 import '../css/ProductPage.css'
+import AddToCart from './AddToCart'
 
 export default function ProductPage() {
 
 
- 
+  const navigate = useNavigate()
 
     const {categoryName,productName} = useParams()
     // const navigate = useNavigate()
@@ -40,7 +41,8 @@ export default function ProductPage() {
       <div className='black-stripe'></div>
     <div className='container product-page-container'>
       <section>
-        <Link to={`/${categoryName}`}><p className='color-gray'>Go back</p></Link>
+        {/* <Link to={`/${categoryName}`}><p className='color-gray'>Go back</p></Link> */}
+       <p onClick={() =>  navigate(-1)} className='color-gray cursor-pointer'>Go back</p>
         <img className='image-border image-mobile' src={mobileImage} alt='product'/>
         <img className='image-border image-tablet' src={tabletImage} alt='product'/>
         <img className='image-border image-desktop' src={desktopImage} alt='product'/>
@@ -48,7 +50,7 @@ export default function ProductPage() {
         <h2 className='product-page-name'>{product.name}</h2>
         <p className='color-gray'>{product.description}</p>
         <h6 className='product-page-price'>{formatCurrency(product.price)}</h6>
-        <h3>Add to cart</h3>
+        <AddToCart product={product}/>
       </section>
       <section>
         <h3>features</h3>
