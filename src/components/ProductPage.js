@@ -38,28 +38,32 @@ export default function ProductPage() {
     if(!product) return <PageNotFound />
   return (
     <>
-      <div className='black-stripe'></div>
     <div className='container product-page-container'>
-      <section>
-        {/* <Link to={`/${categoryName}`}><p className='color-gray'>Go back</p></Link> */}
        <p onClick={() =>  navigate(-1)} className='color-gray cursor-pointer'>Go back</p>
-        <img className='image-border image-mobile' src={mobileImage} alt='product'/>
-        <img className='image-border image-tablet' src={tabletImage} alt='product'/>
-        <img className='image-border image-desktop' src={desktopImage} alt='product'/>
-        {product.new && <h6 className='overline color-accent product-page-new-product'>new product</h6>}
-        <h2 className='product-page-name'>{product.name}</h2>
-        <p className='color-gray'>{product.description}</p>
-        <h6 className='product-page-price'>{formatCurrency(product.price)}</h6>
-        <AddToCart product={product}/>
+      <section className='product-page-top-section'>
+        <div className='product-page-image-section'>
+          <img className='image-border image-mobile' src={mobileImage} alt='product'/>
+          <img className='image-border image-tablet' src={tabletImage} alt='product'/>
+          <img className='image-border image-desktop' src={desktopImage} alt='product'/>
+        </div>
+        <div className='product-page-top-section-text'>
+          {product.new && <h6 className='overline color-accent product-page-new-product'>new product</h6>}
+          <h2 className='product-page-name'>{product.name}</h2>
+          <p className='color-gray'>{product.description}</p>
+          <h6 className='product-page-price'>{formatCurrency(product.price)}</h6>
+          <AddToCart product={product}/>
+        </div>
       </section>
-      <section>
-        <h3>features</h3>
-        <p className='color-gray product-page-features'>{product.features}</p>
-      </section>
-      <section>
-        <h3>in the box</h3>
-        <InTheBoxList includes={product.includes}/>
-      </section>
+      <div className='desktop-features-inthebox'>
+        <section>
+          <h3>features</h3>
+          <p className='color-gray product-page-features'>{product.features}</p>
+        </section>
+        <section className='product-page-in-the-box-section'>
+          <h3>in the box</h3>
+          <InTheBoxList includes={product.includes}/>
+        </section>
+      </div>
       <ProductImageGallery gallery={product.gallery} />
       <ReccomendedList product={product}/>
       <CategoryList />

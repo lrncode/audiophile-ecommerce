@@ -1,0 +1,7 @@
+.nav-links-element{
+    margin: 0;
+}
+
+.nav-links-element + .nav-links-element{
+        margin-left: 1.6rem;    
+    }

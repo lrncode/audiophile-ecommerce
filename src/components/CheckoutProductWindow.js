@@ -22,7 +22,7 @@ export default function CheckoutProductWindow({product,form=false}) {
 
   return (
     <div className={`${form ? 'checkout-product-window-form' : 'checkout-product-window'}`}>
-      <div className='asdfg'>
+      <div className='checkout-product-window-left'>
         <div className='checkout-product-image'>
           <img className='image-border' src={cartImage} alt='product' />
         </div>
@@ -33,7 +33,7 @@ export default function CheckoutProductWindow({product,form=false}) {
       </div>
       <div className='checkout-window-quantity-buttons'>
       {
-        form && <h6 className='color-gray'>x{shoppingCartProducts.find(prod => prod.name === product.name).quantity}</h6>
+        form && <h6 className='color-gray quantity-form'>x{shoppingCartProducts.find(prod => prod.name === product.name).quantity}</h6>
       }
       {  !form &&   <QuantityButtons
                   buttonLeft={() => changeQuantity( product.name ,'minus' )}

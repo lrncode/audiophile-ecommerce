@@ -18,7 +18,7 @@ export default function SuccessfulOrderProductWindow() {
   return (
     <div className='successful-order-product-window'>
       <div className='successful-order-top'>
-        <div className='successful-order-product-first'>
+        <div className={`${otherItems > 0 ? 'successful-order-product-first border-bottom' : 'successful-order-product-first '}`}>
           <CheckoutProductWindow
                     product={shoppingCartProducts[0]}
                     form={true} />

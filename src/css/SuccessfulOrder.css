@@ -24,3 +24,8 @@
     width: 4.5rem;
 }
 
+@media (min-width:768px){
+  .successful-order{
+    width: 38rem;
+  }
+}

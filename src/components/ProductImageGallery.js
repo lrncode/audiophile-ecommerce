@@ -6,14 +6,17 @@ export default function ProductImageGallery({gallery}) {
 
   return (
     <div className='gallery-container'>
-    {   
-        Object.entries(gallery).map( (images,index) => {
-            return <ProductImageGalleryItem 
-                                        key={index}
-                                        images={images}
-                                        />
-        })
-    }
+    <div  className='gallery-wrapper'>
+      {
+          Object.entries(gallery).map( (images,index) => {
+              return <ProductImageGalleryItem
+                                          area={`${index === 0 ? 'topLeft' : index === 1 ? 'bottomLeft' : 'right'}`}
+                                          key={index}
+                                          images={images}
+                                          />
+          })
+      }
+    </div>
     </div>
   )
 }

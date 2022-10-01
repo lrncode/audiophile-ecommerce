@@ -4,6 +4,7 @@ import productImageTablet from '../assets/home/tablet/image-speaker-zx9.png'
 import productImageDesktop from '../assets/home/desktop/image-speaker-zx9.png'
 import patternCircles from '../assets/home/desktop/pattern-circles.svg'
 import '../css/ProductAdZX9.css'
+import { Link } from 'react-router-dom'
 
 export default function ProductAdZX9() {
   return (
@@ -14,7 +15,9 @@ export default function ProductAdZX9() {
       <img className='circles-pattern' src={patternCircles} alt='circle pattern behind speaker' />
       <h1 className='product-ad-square-name'>zx9 speaker</h1>
       <p className='text-center product-ad-square-description'>Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.</p>
-      <button className='btn-primary button-ad-square'>see product</button>
+      <div className='button-ad-square'>
+        <Link to='/headphones/zx9-speaker'><button className='btn-primary'>see product</button></Link>
+      </div>
     </div>
   )
 }

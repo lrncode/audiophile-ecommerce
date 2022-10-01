@@ -7,12 +7,14 @@ import CheckoutProductList from './CheckoutProductList'
 import {formatCurrency} from '../utilities/formatCurrency'
 import { usePopUp } from '../context/PopUpContext'
 import Backdrop from './Backdrop'
+import { useNavigate } from 'react-router-dom'
 
 export default function CheckoutWindow() {
 
+    const navigate = useNavigate()
     const {shoppingCartProducts,removeAll} = useShoppingCart()
     const {productData} = useProductData() 
-    const {toggleCheckoutForm} = usePopUp()
+    const {hideCheckoutWindow} = usePopUp()
 
     let totalProductNumber = shoppingCartProducts.reduce((acc,product) => acc + 1 , 0)
     let totalPrice = shoppingCartProducts.reduce((acc,product) => acc +  product.quantity*(productData.find(prod => prod.slug === product.name).price) , 0)
@@ -20,7 +22,9 @@ export default function CheckoutWindow() {
 
     function checkout(){
         if(shoppingCartProducts.length === 0) return
-        toggleCheckoutForm()    }
+        hideCheckoutWindow()
+        navigate('/checkout')
+    }
 
   return (
     ReactDOM.createPortal(

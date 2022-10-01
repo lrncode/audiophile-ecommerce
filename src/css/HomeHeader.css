@@ -7,6 +7,9 @@
 
 .header-description{
     display: none;
+    width: 23rem;
+    color:var(--clr-light);
+    opacity: .8;
 }
 
 .header-text{
@@ -40,5 +43,29 @@
 @media (min-width:768px){
     .header-description{
         display: block;
+    }
+}
+
+@media (min-width:1440px){
+    .home-header{
+        justify-content: flex-start;
+    }
+
+    .header-text{
+        align-items: flex-start;
+        text-align: left;     
+    }
+
+    .header-btn,
+    .header-text{
+        left:11rem;
+    }
+
+    .header-btn{
+        transform: translateX(0);
+    }
+
+    .header-image{
+        width: 100%;
     }
 }

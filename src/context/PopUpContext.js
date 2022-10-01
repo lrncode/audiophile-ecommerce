@@ -12,11 +12,12 @@ export function usePopUp(){
 
 export default function PopUpProvider({children}){
 
+    
+
     const {removeAll} = useShoppingCart()
 
     const [showMobileMenu,setShowMobileMenu] = useState(false)
     const [showCheckoutWindow,setShowCheckoutWindow] = useState(false)
-    const [showCheckoutForm,setShowCheckoutForm] = useState(false)
     const [showSuccessfulOrderWindow,setShowSuccessfulOrderWindow] = useState(false)
 
     function toggleMobileMenu(){
@@ -27,19 +28,16 @@ export default function PopUpProvider({children}){
         setShowCheckoutWindow(prev => !prev)
     }
 
-    function toggleCheckoutForm(){
-        setShowCheckoutForm(prev => !prev)
-        setShowCheckoutWindow(prev => !prev)
+    function hideCheckoutWindow(){
+        setShowCheckoutWindow(false)
     }
 
     function toggleSuccessfulOrderWindow(){
         setShowSuccessfulOrderWindow(true)
-        // setShowCheckoutForm(false)
     }
 
     function backToHome(){
         removeAll()
-        setShowCheckoutForm(false)
         setShowCheckoutWindow(false)
         setShowSuccessfulOrderWindow(false)
     }
@@ -48,12 +46,11 @@ export default function PopUpProvider({children}){
         <popUpContext.Provider value={{
                         backToHome,
                         toggleSuccessfulOrderWindow,
-                        toggleCheckoutForm,
+                        hideCheckoutWindow,
                         toggleCheckoutWindow,
                         toggleMobileMenu,
                         showMobileMenu,
                         showCheckoutWindow,
-                        showCheckoutForm,
                         showSuccessfulOrderWindow
                         }}>
             {children}

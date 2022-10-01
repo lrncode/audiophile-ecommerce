@@ -3,3 +3,11 @@
     flex-direction:column;
     gap: 5rem;
 }
+
+
+@media (min-width:768px){
+    .reccomended-list-container{
+        flex-direction: row;
+        padding-top: 2rem;
+    }
+}

@@ -41,3 +41,14 @@
 .checkout-total{
     font-weight: 400; 
 }
+
+
+@media (min-width:768px){
+    .checkout-window{      
+        top:8rem;
+        left:95%;
+        transform: translateX(-100%);
+        border-radius: var(--border-radius);
+        z-index: 21;
+    }
+}

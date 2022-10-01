@@ -2,6 +2,7 @@ import React, { useDebugValue, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useProductData } from '../context/ProductDataContext'
 import ProductCard from './ProductCard'
+import CategoryList from './CategoryList'
 import '../css/CategoryPage.css'
 
 export default function CategoryPage() {
@@ -24,10 +25,14 @@ export default function CategoryPage() {
         <h1>{categoryName}</h1>
       </div>
       <div className='product-card-list'>
-        {categoryItems.sort(function(a,b){return a.new < b.new }).map(product => {
+        {categoryItems.sort(function(a,b){return a.new < b.new }).map((product,index) => {
             return  <ProductCard  key={product.id}
-                                  product={product}/>
+                                  product={product}
+                                  arrangement={index%2 === 0 ? 'imageLeft' : 'imageRight'}/>
         })}
+      </div>
+      <div className='container'>
+        <CategoryList />
       </div>
     </div>
   )

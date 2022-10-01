@@ -1,4 +1,5 @@
 .zx7{
+    width: 100%;
     position: relative;
     margin-bottom: 2rem;
 }
@@ -12,3 +13,24 @@
 .zx7-image{
     border-radius: var(--border-radius);
 }
+
+@media (min-width:768px){
+    .zx7-text{
+        position: absolute;
+        padding: 5.8rem 4.4rem;    
+    }
+
+    .zx7-image{
+        width: 100%;
+    }
+
+}
+
+@media (min-width:1440px){
+    .zx7-text{
+        position: absolute;
+        padding: 5.8rem 7rem;    
+    }
+
+}
+
