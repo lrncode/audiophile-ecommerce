@@ -31,8 +31,13 @@
 
 .remove-all{
     text-decoration: underline;
+    color: var(--clr-black-transparent);
+    transition: var(--button-transition);
 }
 
+.remove-all:hover{
+    color: var(--clr-accent);
+}
 
 .checkout-window *{
     font-weight: 400;

@@ -27,7 +27,7 @@ img {
   --clr-white-transparent : rgba(255,255,255,.5);
   --clr-gray-transparent : rgba(255,255,255,.1);
 
-  --button-transition: .2s ease-in-out;
+  --button-transition: .15s ease-in-out;
   --border-radius : .4rem;
 
   --container-width-sm-md:90%;
@@ -114,14 +114,13 @@ button{
 }
 
 .btn-primary:hover{
-  background-color: transparent;
+  background-color: var(--clr-black-transparent);
   border-color: var(--clr-black-transparent);
 }
 
 .btn-transparent:hover{
   background-color: var(--clr-primary);
   color: var(--clr-very-light);
-  border: 1px solid var(--clr-primary);
 }
 
 

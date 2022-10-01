@@ -58,7 +58,8 @@
 
     .header-btn,
     .header-text{
-        left:11rem;
+        left: calc( ( 100% - var(--container-width-lg) ) / 2 ); ;
+        ;
     }
 
     .header-btn{

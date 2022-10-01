@@ -30,6 +30,17 @@
     margin: 2.6rem 0;
 }
 
+.socials-icon{
+    color:var(--clr-white);
+    transition: var(--button-transition);
+}
+
+.socials-icon:hover{
+    cursor: pointer;
+    color:var(--clr-accent)
+}
+
+
 .socials-icon + .socials-icon{
     margin-left: 1rem;
 }

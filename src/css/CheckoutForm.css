@@ -22,9 +22,19 @@
     margin-bottom: 0rem;
 }
 
+.checkout-form-go-back{
+    transition: var(--button-transition);
+}
+
+.checkout-form-go-back:hover{
+    color: var(--clr-accent);
+}
+
 .checkout-form-checkout-header{
     margin-bottom: 0;
 }
+
+
 
 .checkout-form-label{
     position: relative;
@@ -64,7 +74,7 @@ input:focus{
 }
 
 .input-error{
-    border-color: red;
+    border-color: red !important ;
 }
 
 .error-text{
