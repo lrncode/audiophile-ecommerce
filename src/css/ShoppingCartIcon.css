@@ -1,0 +1,8 @@
+.shopping-cart-icon{
+    color:var(--clr-white);
+    transition: var(--button-transition);
+}
+
+.shopping-cart-icon:hover{
+    color: var(--clr-accent);
+}

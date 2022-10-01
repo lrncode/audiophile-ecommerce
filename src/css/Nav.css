@@ -27,6 +27,10 @@
     display: none;
 }
 
+.nav-logo{
+    align-self: center;
+}
+
 @media (min-width:768px){
 
     .nav-logo{

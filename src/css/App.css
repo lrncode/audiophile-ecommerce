@@ -28,10 +28,13 @@ img {
   --clr-gray-transparent : rgba(255,255,255,.1);
 
   --button-transition: .15s ease-in-out;
+  --error-opacity-transition : .15s ease-in-out;
+  
   --border-radius : .4rem;
 
   --container-width-sm-md:90%;
   --container-width-lg:80%
+
 }
 
 a,a:visited,a:focus,a:active{
@@ -42,6 +45,23 @@ a,a:visited,a:focus,a:active{
 ::placeholder{
   color: rgba(0,0,0,.7);
 }
+
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.show{
+  opacity: 1;
+  /* transition: .1s ease-in-out; */
+}
+
+.hide{
+  opacity: 0;
+  /* transition: .1s ease-in-out; */
+}
+
+
 
 .image-mobile{
   display: block;
@@ -59,6 +79,8 @@ a,a:visited,a:focus,a:active{
   border-radius: var(--border-radius);
 }
 
+
+
 .border-rounded{
   border-radius: var(--border-radius);
 }
@@ -67,9 +89,7 @@ a,a:visited,a:focus,a:active{
   border-color: var(--clr-accent);
 }
 
-.cursor-pointer{
-  cursor: pointer;
-}
+
 
 button{
   background: none  ;

@@ -3,7 +3,7 @@ import { useProductData } from '../context/ProductDataContext'
 import CategoryItem from './CategoryItem'
 import '../css/CategoryList.css'
 
-export default function CategoryList() {
+export default function CategoryList({mobileMenu = false}) {
 
   const {productData} = useProductData()
 
@@ -11,7 +11,8 @@ export default function CategoryList() {
     <div className='category-list'>
       {[...new Set(productData.map(product => product.category))].map(category => {
         return <CategoryItem  key={category}
-                              category={category}/>
+                              category={category}
+                              mobileMenu = {mobileMenu}/>
       })}    
     </div>
   )

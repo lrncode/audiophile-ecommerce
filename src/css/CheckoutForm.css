@@ -18,6 +18,10 @@
     gap: 2rem;
 }
 
+.checkout-form-desktop-summary button{
+    width: 100%;
+}
+
 .checkout-form-desktop-form > h6 {
     margin-bottom: 0rem;
 }
@@ -67,6 +71,8 @@ input{
     border:1px solid rgb(210, 210, 210);
     font-weight: 500;
     font-size: 0.875rem;
+    transition: var(--error-opacity-transition);
+
 }
 
 input:focus{
@@ -75,6 +81,7 @@ input:focus{
 
 .input-error{
     border-color: red !important ;
+    transition: var(--error-opacity-transition);
 }
 
 .error-text{

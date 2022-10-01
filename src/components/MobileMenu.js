@@ -4,14 +4,14 @@ import CategoryList from './CategoryList'
 import '../css/MobileMenu.css'
 import Backdrop from './Backdrop'
 
-export default function MobileMenu() {
+export default function MobileMenu({showMobileMenu}) {
   return (
     ReactDOM.createPortal(
     <>
-      <div className='mobile-menu'>
-        <CategoryList />
+      <div className={`${showMobileMenu ? 'mobile-menu show-animation' : 'mobile-menu hide-animation'}`}>
+        <CategoryList mobileMenu={true} />
       </div>
-      <Backdrop />
+      {showMobileMenu && <Backdrop />}
     </> ,
     document.getElementById('mobile-menu')
     )

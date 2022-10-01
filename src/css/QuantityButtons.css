@@ -1,36 +1,29 @@
-/* .quantity-buttons{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--clr-light);
-    gap: .6rem;
-    padding: .5rem 1rem;
-} */
-
-.quantity-buttons{
-    
+.quantity-buttons{    
     display: grid;
-    grid-template-columns: 1rem 2rem 1rem;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 2.2rem 2rem 2.2rem;
+    grid-template-rows: auto;
     background-color: var(--clr-light);
-    gap: .6rem;
+    /* gap: .6rem; */
     padding: .5rem 1rem;
-}
-
-.quantity-number{
-    text-align: center;
-    cursor: pointer;
-    margin: 0;
-    padding: 0 0.2rem;
 }
 
 .quantity-button{
     text-align: center;
     cursor: pointer;
     margin: 0;
-    padding: 0 0.2rem;
+    /* padding: 0 0.2rem; */
     color: var(--clr-black-transparent);
     transition: var(--button-transition);
 }
+
+.quantity-number{
+    text-align: center;
+    margin: 0;
+    /* padding: 0 0.2rem; */
+}
+
 
 .quantity-button:hover{
     color: var(--clr-accent);

@@ -5,7 +5,7 @@ import { useImportImage } from '../hooks/useImportImage'
 import ButtonArrow from './ButtonArrow'
 import '../css/CategoryItem.css'
 
-export default function CategoryItem({category}) {
+export default function CategoryItem({category , mobileMenu}) {
 
     const [loading,error,image] = useImportImage(category)
 
@@ -20,7 +20,7 @@ export default function CategoryItem({category}) {
             <h6 className='category-item-name'>{category}</h6>
             <Link to={`/${category}`}>
                 <p>
-                    <ButtonArrow text={'shop'}/>
+                    <ButtonArrow text={'shop'} mobileMenu={mobileMenu}/>
                 </p>
             </Link>
         </div>

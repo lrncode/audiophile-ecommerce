@@ -10,13 +10,16 @@ import SuccessfulOrderWindow from './SuccessfulOrderWindow'
 
 export default function SharedLayout() {
 
-  const {showMobileMenu,showCheckoutWindow,showCheckoutForm,showSuccessfulOrderWindow} = usePopUp()
+  const {showMobileMenu,showCheckoutWindow,showSuccessfulOrderWindow} = usePopUp()
   const location = useLocation()
+
+  console.log(showMobileMenu)
 
   return (
     <>
         <Nav homePage={location.pathname === '/' ? true : false}/>
-        {showMobileMenu && <MobileMenu/>}
+        {/* {showMobileMenu && <MobileMenu showMobileMenu={showMobileMenu}/>} */}
+        <MobileMenu showMobileMenu={showMobileMenu}/>
         {showCheckoutWindow && <CheckoutWindow/>}
         {showSuccessfulOrderWindow && <SuccessfulOrderWindow />}
         <Outlet />

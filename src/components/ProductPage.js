@@ -9,6 +9,7 @@ import ReccomendedList from './ReccomendedList'
 import CategoryList from './CategoryList'
 import '../css/ProductPage.css'
 import AddToCart from './AddToCart'
+import TextButton from './TextButton'
 
 export default function ProductPage() {
 
@@ -39,7 +40,8 @@ export default function ProductPage() {
   return (
     <>
     <div className='container product-page-container'>
-       <p onClick={() =>  navigate(-1)} className='color-gray cursor-pointer'>Go back</p>
+        <TextButton clickFunction={() => navigate(-1)}/>
+       {/* <p onClick={() =>  navigate(-1)} className='color-gray cursor-pointer'>Go back</p> */}
       <section className='product-page-top-section'>
         <div className='product-page-image-section'>
           <img className='image-border image-mobile' src={mobileImage} alt='product'/>
