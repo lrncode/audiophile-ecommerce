@@ -1,16 +1,27 @@
-export default function FormElement({handleChange , error , data , label , name , placeholder , additionalClass= ''}) {
+export default function FormElement({  touched=false,
+                                       onBlur,
+                                       handleChange,
+                                       error,
+                                       data,
+                                       label,
+                                       name,
+                                       placeholder,
+                                       additionalClass= ''}) {
 
-  const errorPlaceholder = 'error placeholder message'
 
   return (
     <div className={`checkout-field ${additionalClass}`}>
-    <div className={`${error  ? 'checkout-form-label error-text' : 'checkout-form-label'}`}><label htmlFor='fullName'>{label}</label><p className={`${ error !== errorPlaceholder ? 'error-text show' : 'error-text hide'}`}>{error}</p></div>
+    <div className={`${error && touched  ? 'checkout-form-label error-text' : 'checkout-form-label'}`}>
+        <label htmlFor='fullName'>{label}</label>
+        <p className={`${ error && touched ? 'error-text show' : 'error-text hide'}`}>{error}</p>
+    </div>
     <input id={name}
            value={data}
+           onBlur={onBlur}
            name={name}
            placeholder={placeholder}
            onChange={handleChange}
-           className={`${error && error !== errorPlaceholder ? 'input-error' : ''}`}
+           className={`${error && touched ? 'input-error' : ''}`}
            />
   </div>
   )

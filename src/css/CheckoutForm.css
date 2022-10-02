@@ -86,11 +86,13 @@ input:focus{
 
 .error-text{
     color: red;
-    font-weight: 400;
+    font-weight: 500;
+    margin-bottom: 0;
 }
 
 label{
     font-weight: 500;
+    margin-bottom: 0;
 }
 
 fieldset{

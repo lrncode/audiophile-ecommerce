@@ -40,7 +40,7 @@ export default function CheckoutForm() {
     navigate(-1)
   }
         
-
+  console.log(formik.touched)
 
 
   return (
@@ -52,18 +52,24 @@ export default function CheckoutForm() {
           <h6 className='color-accent subtitle'>billing details</h6>
           <div className='form-billing-details'>
               <FormElement  name='fullName'
+                            onBlur={formik.handleBlur}
+                            touched={formik.touched.fullName}
                             data={formik.values.fullName}
                             label='Name'
                             error={formik.errors.fullName}
                             placeholder='Alexei Ward'
                             handleChange={formik.handleChange} /> 
               <FormElement  name='email'
+                            onBlur={formik.handleBlur}
+                            touched={formik.touched.email}
                             data={formik.values.email}
                             label='Email'
                             error={formik.errors.email}
                             placeholder='alexei@mail.com'
                             handleChange={formik.handleChange} />       
               <FormElement  name='phone'
+                            onBlur={formik.handleBlur}
+                            touched={formik.touched.phone}
                             data={formik.values.phone}
                             label='Phone number'
                             error={formik.errors.phone}
@@ -72,6 +78,8 @@ export default function CheckoutForm() {
           </div>
           <h6 className='color-accent subtitle'>shipping info</h6>
               <FormElement  name='address'
+                            onBlur={formik.handleBlur}
+                            touched={formik.touched.address}
                           data={formik.values.address}
                           label='Address'
                           error={formik.errors.address}
@@ -79,18 +87,24 @@ export default function CheckoutForm() {
                           handleChange={formik.handleChange} /> 
           <div className='form-shipping-info'>
               <FormElement  name='zipCode'
+                            onBlur={formik.handleBlur}
+                            touched={formik.touched.zipCode}
                             data={formik.values.zipCode}
                             label='ZIP code'
                             error={formik.errors.zipCode}
                             placeholder='10001'
                             handleChange={formik.handleChange} />   
               <FormElement  name='city'
+                            onBlur={formik.handleBlur}
+                            touched={formik.touched.city}
                             data={formik.values.city}
                             label='City'
                             error={formik.errors.city}
                             placeholder='New York'
                             handleChange={formik.handleChange} /> 
               <FormElement  name='country'
+                            onBlur={formik.handleBlur}
+                            touched={formik.touched.country}
                             data={formik.values.country}
                             label='Country'
                             error={formik.errors.country}
@@ -100,13 +114,14 @@ export default function CheckoutForm() {
           <h6 className='color-accent subtitle'>payment details</h6>
           <fieldset>        
             <div className='form-payment-method'>
-              {/*Payment method error message */}
-              <div className={`${formik.errors.paymentMethod  ? 'checkout-form-label error-text' : 'checkout-form-label'}`}><label htmlFor='fullName'>Payment method</label><p className={`${ formik.errors.paymentMethod  ? 'error-text show' : 'error-text hide'}`}>{formik.errors.country}</p></div>
+              <div className={`${formik.errors.paymentMethod  ? 'checkout-form-label error-text' : 'checkout-form-label'}`}><label htmlFor='paymentMethod'>Payment method</label></div>
               <div className='payment-methods'>
               <div className={`${formik.errors.paymentMethod  ? 'checkout-form-label error-text show' : 'checkout-form-label error-text hide'}`} ><p>{formik.errors.paymentMethod}</p></div>
               <FormRadioButtonElement
                             radioValue='eMoney'
                             name='paymentMethod'
+                            onBlur={formik.handleBlur}
+                            touched={formik.touched.paymentMethod}
                             data={formik.values.paymentMethod}
                             label='e-Money'
                             error={formik.errors.paymentMethod}
@@ -114,6 +129,8 @@ export default function CheckoutForm() {
               <FormRadioButtonElement
                             radioValue='cashOnDelivery'
                             name='paymentMethod'
+                            onBlur={formik.handleBlur}
+                            touched={formik.touched.paymentMethod}
                             data={formik.values.paymentMethod}
                             label='Cash on delivery'
                             error={formik.errors.paymentMethod}
@@ -123,6 +140,8 @@ export default function CheckoutForm() {
           </fieldset>
             <div className='form-payment-numbers'>
               <FormElement  name='eMoneyNumber'
+                            onBlur={formik.handleBlur}
+                            touched={formik.touched.eMoneyNumber}
                             data={formik.values.eMoneyNumber}
                             label='e-Money number'
                             error={formik.errors.eMoneyNumber}
@@ -130,6 +149,8 @@ export default function CheckoutForm() {
                             handleChange={formik.handleChange}
                             additionalClass = 'payment-number'/> 
               <FormElement  name='eMoneyPin'
+                            onBlur={formik.handleBlur}
+                            touched={formik.touched.eMoneyPin}
                             data={formik.values.eMoneyPin}
                             label='e-Money PIN'
                             error={formik.errors.eMoneyPin}
