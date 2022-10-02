@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
-import '../css/CheckoutForm.css'
+import React from 'react'
+import {useFormik} from 'formik'
+import { checkoutFormSchema } from '../Validations/checkoutFormValidation'
 import CheckoutFormSummary from './CheckoutFormSummary'
 import {usePopUp} from '../context/PopUpContext'
-import _ from 'lodash'
 import { useNavigate } from 'react-router-dom'
 import FormElement from './FormElement'
 import FormRadioButtonElement from './FormRadioButtonElement'
-import { checkoutFormSchema } from '../Validations/checkoutFormValidation'
-import {useFormik} from 'formik'
+import '../css/CheckoutForm.css'
 
 export default function CheckoutForm() {
   
@@ -52,110 +51,88 @@ export default function CheckoutForm() {
           <h6 className='color-accent subtitle'>billing details</h6>
           <div className='form-billing-details'>
               <FormElement  name='fullName'
-                            onBlur={formik.handleBlur}
-                            touched={formik.touched.fullName}
-                            data={formik.values.fullName}
+                            placeholder='Alexei Ward'
                             label='Name'
                             error={formik.errors.fullName}
-                            placeholder='Alexei Ward'
-                            handleChange={formik.handleChange} /> 
+                            touched={formik.touched.fullName}
+                            {...formik.getFieldProps('fullName')} />                     
               <FormElement  name='email'
-                            onBlur={formik.handleBlur}
                             touched={formik.touched.email}
-                            data={formik.values.email}
                             label='Email'
                             error={formik.errors.email}
                             placeholder='alexei@mail.com'
-                            handleChange={formik.handleChange} />       
+                            {...formik.getFieldProps('email')}  />       
               <FormElement  name='phone'
-                            onBlur={formik.handleBlur}
                             touched={formik.touched.phone}
-                            data={formik.values.phone}
                             label='Phone number'
                             error={formik.errors.phone}
                             placeholder='+1 202-555-0136'
-                            handleChange={formik.handleChange} />    
+                            {...formik.getFieldProps('phone')} />    
           </div>
           <h6 className='color-accent subtitle'>shipping info</h6>
               <FormElement  name='address'
-                            onBlur={formik.handleBlur}
                             touched={formik.touched.address}
-                          data={formik.values.address}
-                          label='Address'
-                          error={formik.errors.address}
-                          placeholder='1137 Williams Avenue'
-                          handleChange={formik.handleChange} /> 
+                            label='Address'
+                            error={formik.errors.address}
+                            placeholder='1137 Williams Avenue'
+                            {...formik.getFieldProps('address')} /> 
           <div className='form-shipping-info'>
               <FormElement  name='zipCode'
-                            onBlur={formik.handleBlur}
                             touched={formik.touched.zipCode}
-                            data={formik.values.zipCode}
                             label='ZIP code'
                             error={formik.errors.zipCode}
                             placeholder='10001'
-                            handleChange={formik.handleChange} />   
+                            {...formik.getFieldProps('zipCode')} />   
               <FormElement  name='city'
-                            onBlur={formik.handleBlur}
                             touched={formik.touched.city}
-                            data={formik.values.city}
                             label='City'
                             error={formik.errors.city}
                             placeholder='New York'
-                            handleChange={formik.handleChange} /> 
+                            {...formik.getFieldProps('city')}/> 
               <FormElement  name='country'
-                            onBlur={formik.handleBlur}
                             touched={formik.touched.country}
-                            data={formik.values.country}
                             label='Country'
                             error={formik.errors.country}
                             placeholder='United States'
-                            handleChange={formik.handleChange} /> 
+                            {...formik.getFieldProps('country')}/> 
           </div>
           <h6 className='color-accent subtitle'>payment details</h6>
           <fieldset>        
             <div className='form-payment-method'>
-              <div className={`${formik.errors.paymentMethod  ? 'checkout-form-label error-text' : 'checkout-form-label'}`}><label htmlFor='paymentMethod'>Payment method</label></div>
+              <div className={`${formik.errors.paymentMethod && formik.touched.paymentMethod ? 'checkout-form-label error-text' : 'checkout-form-label'}`}><label htmlFor='paymentMethod'>Payment method</label></div>
               <div className='payment-methods'>
-              <div className={`${formik.errors.paymentMethod  ? 'checkout-form-label error-text show' : 'checkout-form-label error-text hide'}`} ><p>{formik.errors.paymentMethod}</p></div>
+              <div className={`${formik.errors.paymentMethod && formik.touched.paymentMethod ? 'checkout-form-label error-text show' : 'checkout-form-label error-text hide'}`} ><p>{formik.errors.paymentMethod}</p></div>
               <FormRadioButtonElement
                             radioValue='eMoney'
                             name='paymentMethod'
-                            onBlur={formik.handleBlur}
                             touched={formik.touched.paymentMethod}
-                            data={formik.values.paymentMethod}
                             label='e-Money'
                             error={formik.errors.paymentMethod}
-                            handleChange={formik.handleChange} />       
+                            {...formik.getFieldProps('paymentMethod')}/>       
               <FormRadioButtonElement
                             radioValue='cashOnDelivery'
                             name='paymentMethod'
-                            onBlur={formik.handleBlur}
                             touched={formik.touched.paymentMethod}
-                            data={formik.values.paymentMethod}
                             label='Cash on delivery'
                             error={formik.errors.paymentMethod}
-                            handleChange={formik.handleChange} />  
+                            {...formik.getFieldProps('paymentMethod')}/>  
               </div>
             </div>        
           </fieldset>
             <div className='form-payment-numbers'>
               <FormElement  name='eMoneyNumber'
-                            onBlur={formik.handleBlur}
                             touched={formik.touched.eMoneyNumber}
-                            data={formik.values.eMoneyNumber}
                             label='e-Money number'
                             error={formik.errors.eMoneyNumber}
                             placeholder='238521993'
-                            handleChange={formik.handleChange}
+                            {...formik.getFieldProps('eMoneyNumber')}
                             additionalClass = 'payment-number'/> 
               <FormElement  name='eMoneyPin'
-                            onBlur={formik.handleBlur}
                             touched={formik.touched.eMoneyPin}
-                            data={formik.values.eMoneyPin}
                             label='e-Money PIN'
                             error={formik.errors.eMoneyPin}
                             placeholder='6891'
-                            handleChange={formik.handleChange}
+                            {...formik.getFieldProps('eMoneyPin')}
                             additionalClass = 'payment-number'/> 
             </div>
         </div>

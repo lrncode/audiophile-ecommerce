@@ -1,4 +1,4 @@
-import React ,  {createContext, useContext, useState} from "react";
+import React ,  {createContext, useContext, useEffect, useState} from "react";
 
 const shoppingCartContext = createContext()
 
@@ -11,6 +11,15 @@ export function useShoppingCart(){
 export default function ShoppingCartProvider({children}){
 
     const [shoppingCartProducts,setShoppingCartProducts] = useState([])
+
+    useEffect(() => {
+      const localstorageItem  = localStorage.getItem('shoppingCartProducts')
+      if(localstorageItem !== null) setShoppingCartProducts(JSON.parse(localstorageItem))
+    },[])
+
+    useEffect(() => {
+        localStorage.setItem('shoppingCartProducts',JSON.stringify(shoppingCartProducts))
+    },[shoppingCartProducts])
 
     function addToCart(productId,quantity){
         if(quantity === 0) return

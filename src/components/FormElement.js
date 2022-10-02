@@ -1,8 +1,8 @@
 export default function FormElement({  touched=false,
                                        onBlur,
-                                       handleChange,
+                                       onChange,
                                        error,
-                                       data,
+                                       value,
                                        label,
                                        name,
                                        placeholder,
@@ -16,11 +16,11 @@ export default function FormElement({  touched=false,
         <p className={`${ error && touched ? 'error-text show' : 'error-text hide'}`}>{error}</p>
     </div>
     <input id={name}
-           value={data}
+           value={value}
            onBlur={onBlur}
            name={name}
            placeholder={placeholder}
-           onChange={handleChange}
+           onChange={onChange}
            className={`${error && touched ? 'input-error' : ''}`}
            />
   </div>

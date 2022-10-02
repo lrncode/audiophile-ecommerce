@@ -27,7 +27,7 @@ export default function SuccessfulOrderProductWindow() {
       </div>
       <div className='successful-order-bottom'>
         <h6 className='successful-order-grand-total'>grand total</h6>
-        <h6 className='successful-order-price'>{formatCurrency(totalPrice)}</h6>
+        <h6 className='successful-order-price'>{formatCurrency(totalPrice+50+totalPrice*.2)}</h6>
       </div>
     </div>
   )

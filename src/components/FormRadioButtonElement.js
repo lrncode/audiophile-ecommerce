@@ -1,18 +1,15 @@
 import React from 'react'
 
-const errorPlaceholder = 'error placeholder message'
-
-
 export default function FormRadioButtonElement({  touched,
                                                   onBlur,
-                                                  handleChange,
+                                                  onChange,
                                                   error,
-                                                  data,
+                                                  value,
                                                   radioValue,
                                                   label,
                                                   name}) {
   return (
-    <div className={`${ !error && data === radioValue  ? 'radio-button border-accent' : error && touched  ? 'radio-button input-error' : 'radio-button'}`}>
+    <div className={`${ !error && value === radioValue  ? 'radio-button border-accent' : error && touched  ? 'radio-button input-error' : 'radio-button'}`}>
     <label htmlFor={radioValue} className='radio-label'>{label}</label>
     <input
            id={radioValue}
@@ -20,8 +17,8 @@ export default function FormRadioButtonElement({  touched,
            onBlur={onBlur}
            value={radioValue}
            type='radio'
-           checked={data === radioValue}
-           onChange={handleChange}
+           checked={value === radioValue}
+           onChange={onChange}
            className='radio-button-payment-method'
            />
   </div>
