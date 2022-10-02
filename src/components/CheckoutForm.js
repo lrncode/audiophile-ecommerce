@@ -4,6 +4,7 @@ import CheckoutFormSummary from './CheckoutFormSummary'
 import {usePopUp} from '../context/PopUpContext'
 import _ from 'lodash'
 import { useNavigate } from 'react-router-dom'
+import FormElement from './FormElement'
 
 const initialError = {
   fullName:'error placeholder message',
@@ -171,80 +172,51 @@ export default function CheckoutForm() {
           <h3 className='checkout-form-checkout-header'>checkout</h3>
           <h6 className='color-accent subtitle'>billing details</h6>
           <div className='form-billing-details'>
-            <div className='checkout-field'>
-              {/* make different rules for label text and error text */}
-              <div className={`${error.fullName !== errorPlaceholder ? 'checkout-form-label error-text' : 'checkout-form-label'}`}><label htmlFor='fullName'>Name</label><p className={`${ error.fullName !== errorPlaceholder ? 'error-text show' : 'error-text hide'}`}>{error.fullName}</p></div>
-              <input id='fullName'
-                     value={userData.fullName}
-                     name='fullName'
-                     placeholder='Alexei Ward'
-                     onChange={handleChange}
-                     className={`${error.fullName && error.fullName !== errorPlaceholder ? 'input-error' : ''}`}
-                     />
-            </div>
-            <div className='checkout-field'>
-            <div className={`${error.email !== errorPlaceholder ? 'checkout-form-label error-text' : 'checkout-form-label'}`}><label htmlFor='fullName'>Email</label><p className={`${ error.email !== errorPlaceholder ? 'error-text show' : 'error-text hide'}`}>{error.email}</p></div>
-              <input id='email'
-                     name='email'
-                     placeholder='alexei@mail.com'
-                     onChange={handleChange}
-                     value={userData.email}
-                     className={`${error.email && error.email !== errorPlaceholder ? 'input-error' : ''}`}
-                     />
-            </div>
-            <div className='checkout-field'>
-            <div className={`${error.phone !== errorPlaceholder ? 'checkout-form-label error-text' : 'checkout-form-label'}`}><label htmlFor='fullName'>Phone</label><p className={`${ error.phone !== errorPlaceholder ? 'error-text show' : 'error-text hide'}`}>{error.phone}</p></div>
-              <input id='phone'
-                     name='phone'
-                     placeholder='+1 202-555-0136'
-                     onChange={handleChange}
-                     value={userData.phone}
-                     className={`${error.phone && error.phone !== errorPlaceholder ? 'input-error' : ''}`}
-                     />
-            </div>
+              <FormElement  name='fullName'
+                            data={userData.fullName}
+                            label='Name'
+                            error={error.fullName}
+                            placeholder='Alexei Ward'
+                            handleChange={handleChange} /> 
+              <FormElement  name='email'
+                            data={userData.email}
+                            label='Email'
+                            error={error.email}
+                            placeholder='alexei@mail.com'
+                            handleChange={handleChange} />       
+              <FormElement  name='phone'
+                            data={userData.phone}
+                            label='Phone number'
+                            error={error.phone}
+                            placeholder='+1 202-555-0136'
+                            handleChange={handleChange} />    
           </div>
           <h6 className='color-accent subtitle'>shipping info</h6>
-          <div className='checkout-field'>
-          <div className={`${error.address !== errorPlaceholder ? 'checkout-form-label error-text' : 'checkout-form-label'}`}><label htmlFor='fullName'>Address</label><p className={`${ error.address !== errorPlaceholder ? 'error-text show' : 'error-text hide'}`}>{error.address}</p></div>
-            <input id='address'
-                   name='address'
-                   placeholder='1137 Williams Avenue'
-                   onChange={handleChange}
-                   value={userData.address}
-                   className={`${error.address && error.address !== errorPlaceholder ? 'input-error' : ''}`}
-                   />
-          </div>
+              <FormElement  name='address'
+                          data={userData.address}
+                          label='Address'
+                          error={error.address}
+                          placeholder='1137 Williams Avenue'
+                          handleChange={handleChange} /> 
           <div className='form-shipping-info'>
-            <div className='checkout-field'>
-            <div className={`${error.zipCode !== errorPlaceholder ? 'checkout-form-label error-text' : 'checkout-form-label'}`}><label htmlFor='fullName'>ZIP code</label><p className={`${ error.zipCode !== errorPlaceholder ? 'error-text show' : 'error-text hide'}`}>{error.zipCode}</p></div>
-              <input id='zipCode'
-                     name='zipCode'
-                     placeholder='10001'
-                     onChange={handleChange}
-                     value={userData.zipCode}
-                     className={`${error.zipCode && error.zipCode !== errorPlaceholder ? 'input-error' : ''}`}
-                     />
-            </div>
-            <div className='checkout-field'>
-            <div className={`${error.city !== errorPlaceholder ? 'checkout-form-label error-text' : 'checkout-form-label'}`}><label htmlFor='fullName'>City</label><p className={`${ error.city !== errorPlaceholder ? 'error-text show' : 'error-text hide'}`}>{error.city}</p></div>
-              <input id='city'
-                     name='city'
-                     placeholder='New York'
-                     onChange={handleChange}
-                     value={userData.city}
-                     className={`${error.city && error.city !== errorPlaceholder ? 'input-error' : ''}`}
-                     />
-            </div>
-            <div className='checkout-field'>
-            <div className={`${error.country !== errorPlaceholder ? 'checkout-form-label error-text' : 'checkout-form-label'}`}><label htmlFor='fullName'>Country</label><p className={`${ error.country !== errorPlaceholder ? 'error-text show' : 'error-text hide'}`}>{error.country}</p></div>
-              <input id='country'
-                     name='country'
-                     placeholder='United States'
-                     onChange={handleChange}
-                     value={userData.country}
-                     className={`${error.country && error.country !== errorPlaceholder ? 'input-error' : ''}`}
-                     />
-            </div>
+              <FormElement  name='zipCode'
+                            data={userData.zipCode}
+                            label='ZIP code'
+                            error={error.zipCode}
+                            placeholder='10001'
+                            handleChange={handleChange} />   
+              <FormElement  name='city'
+                            data={userData.city}
+                            label='City'
+                            error={error.city}
+                            placeholder='New York'
+                            handleChange={handleChange} /> 
+              <FormElement  name='country'
+                            data={userData.country}
+                            label='Country'
+                            error={error.country}
+                            placeholder='United States'
+                            handleChange={handleChange} /> 
           </div>
           <h6 className='color-accent subtitle'>payment details</h6>
           <fieldset>        
@@ -281,26 +253,20 @@ export default function CheckoutForm() {
             </div>        
           </fieldset>
             <div className='form-payment-numbers'>
-              <div className='checkout-field payment-number'>
-              <div className={`${error.eMoneyNumber && error.eMoneyNumber !== errorPlaceholder ? 'checkout-form-label error-text show' : 'checkout-form-label error-text hide'}`}><label htmlFor='eMoneyNumber'>e-Money number</label><p>{error.eMoneyNumber}</p></div>
-              <input id='eMoneyNumber'
-                     name='eMoneyNumber'
-                     placeholder='238521993'
-                     onChange={handleChange}
-                     value={userData.eMoneyNumber}
-                     className={`${error.eMoneyNumber && error.eMoneyNumber !== errorPlaceholder ? 'input-error' : ''}`}
-                     />
-              </div>
-              <div className='checkout-field payment-number'>
-              <div className={`${error.eMoneyPin && error.eMoneyPin !== errorPlaceholder ? 'checkout-form-label error-text show' : 'checkout-form-label error-text hide'}`}><label htmlFor='eMoneyPin'>e-Money PIN</label><p>{error.eMoneyPin}</p></div>
-              <input id='eMoneyPin'
-                     name='eMoneyPin'
-                     placeholder='6891'
-                     onChange={handleChange}
-                     value={userData.eMoneyPin}
-                     className={`${error.eMoneyPin && error.eMoneyPin !== errorPlaceholder ? 'input-error' : ''}`}
-                     />
-              </div>
+              <FormElement  name='eMoneyNumber'
+                            data={userData.eMoneyNumber}
+                            label='e-Money number'
+                            error={error.eMoneyNumber}
+                            placeholder='238521993'
+                            handleChange={handleChange}
+                            additionalClass = 'payment-number'/> 
+              <FormElement  name='eMoneyPin'
+                            data={userData.eMoneyPin}
+                            label='e-Money PIN'
+                            error={error.eMoneyPin}
+                            placeholder='6891'
+                            handleChange={handleChange}
+                            additionalClass = 'payment-number'/> 
             </div>
         </div>
           <div className='checkout-form-desktop-summary'>
