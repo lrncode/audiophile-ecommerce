@@ -111,12 +111,13 @@ fieldset{
 }
 
 .radio-label{
+    font-size: .875rem;
     padding: 0;
     margin: 0;
 }
 
 .radio-button-payment-method{
-    accent-color: var(--clr-accent);
+    accent-color: var(--clr-accent);    
 }
 
 

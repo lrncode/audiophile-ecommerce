@@ -1,6 +1,6 @@
 *{
   box-sizing: border-box;
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--ff-primary);
 }
 
 html, body {
@@ -14,6 +14,9 @@ img {
 }
 
 :root{
+
+  --ff-primary : 'Manrope', sans-serif;
+
   --clr-primary : #101010;
   --clr-accent : #D87D4A;
   --clr-light : #F1F1F1;
@@ -33,8 +36,14 @@ img {
   --border-radius : .4rem;
 
   --container-width-sm-md:90%;
-  --container-width-lg:80%
+  --container-width-lg:80%;
 
+  --fw-regular: 400;
+  --fw-semi-bold: 500;
+  --fw-bold: 700;
+
+  /* body */
+  --fs-400: 0.9375rem ;
 }
 
 a,a:visited,a:focus,a:active{

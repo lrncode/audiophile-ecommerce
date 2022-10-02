@@ -5,165 +5,44 @@ import {usePopUp} from '../context/PopUpContext'
 import _ from 'lodash'
 import { useNavigate } from 'react-router-dom'
 import FormElement from './FormElement'
-
-const initialError = {
-  fullName:'error placeholder message',
-  email:'error placeholder message',
-  phone:'error placeholder message',
-  address:'error placeholder message',
-  zipCode:'error placeholder message',
-  city:'error placeholder message',
-  country:'error placeholder message',
-  paymentMethod : 'error placeholder message',
-  eMoneyNumber : 'error placeholder message',
-  eMoneyPin : 'error placeholder message',
-  }
-  
-  const errorPlaceholder = 'error placeholder message'
-
-  const validNameRegex = /^[a-zA-Z ]{2,30}$/
-  const validEmailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
-  // const validPhoneRegex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g
-  const validPhoneRegex = /^\d{9}$/g
-  const validZipCodeRegex = /^\d{5}$/g
-  const validCityRegex = /^[a-zA-Z ]{2,20}$/
-
+import FormRadioButtonElement from './FormRadioButtonElement'
+import { checkoutFormSchema } from '../Validations/checkoutFormValidation'
+import {useFormik} from 'formik'
 
 export default function CheckoutForm() {
+  
+  const formik = useFormik({
+    initialValues: {
+      fullName:'',
+      email:'',
+      phone:'',
+      address:'',
+      zipCode:'',
+      city:'',
+      country:'',
+      paymentMethod : '',
+      eMoneyNumber : '',
+      eMoneyPin : '',
+     },
+     onSubmit: values => {
+        if(!formik.isValid) return
+        toggleSuccessfulOrderWindow()
+     },
+     validationSchema:checkoutFormSchema
+  })
 
 
   const navigate = useNavigate()
   const {toggleCheckoutWindow,toggleSuccessfulOrderWindow} = usePopUp()
-  const [error,setError] = useState(initialError)
-  const [userData,setUserData] = useState({fullName:'',
-                                            email:'',
-                                            phone:'',
-                                            address:'',
-                                            zipCode:'',
-                                            city:'',
-                                            country:'',
-                                            paymentMethod : '',
-                                            eMoneyNumber : '',
-                                            eMoneyPin : '',
-                                           })
-
-
-  function handleChange(e){
-    const {name,value} = e.target
-    setUserData(prev => {
-      return {...prev , [name] : value}
-    })  
-    console.log(userData)
-  }
-
-  function handleValidation(){
-
-    const errors = {
-      fullName:'error placeholder message',
-      email:'error placeholder message',
-      phone:'error placeholder message',
-      address:'error placeholder message',
-      zipCode:'error placeholder message',
-      city:'error placeholder message',
-      country:'error placeholder message',
-      paymentMethod : 'error placeholder message',
-      eMoneyNumber : 'error placeholder message',
-      eMoneyPin : 'error placeholder message',
-      }
-
-    // Name errors    
-    if(userData.fullName.length === 0){
-      errors.fullName = 'Can\'t be blank'
-    }
-    else if(!validNameRegex.test(userData.fullName)){  
-      errors.fullName = 'Invalid name'
-    }
-
-
-    //Email errors
-    if(userData.email.length === 0){
-      errors.email = 'Can\'t be blank'
-    }
-    else if(!validEmailRegex.test(userData.email)){  
-      errors.email = 'Invalid email'
-    }
-
-    //Phone errors
-    if(userData.phone.length === 0){
-      errors.phone = 'Can\'t be blank'
-    }
-    else if(!validPhoneRegex.test(userData.phone)){  
-      errors.phone = 'Invalid phone number'
-    }
-
-    //Address errors
-    if(userData.address.length === 0){
-      errors.address = 'Can\'t be blank'
-    }
-
-    //ZIP code errors
-    if(userData.zipCode.length === 0){
-      errors.zipCode = 'Can\'t be blank'
-    }
-    else if(!validZipCodeRegex.test(userData.zipCode)){  
-      errors.zipCode = 'Invalid ZIP code'
-    }
-
-    //City errors
-    if(userData.city.length === 0){
-      errors.city = 'Can\'t be blank'
-    }
-    else if(!validCityRegex.test(userData.city)){  
-      errors.city = 'Invalid city'
-    }
-
-    //Country errors
-    if(userData.country.length === 0){
-      errors.country = 'Can\'t be blank'
-    }
-    else if(!validCityRegex.test(userData.country)){  
-      errors.country = 'Invalid country name'
-    }
-
-    //Payment method errors
-    if(userData.paymentMethod.length === 0){
-      errors.paymentMethod = 'Select a payment method'
-    }
-
-    //eMoney number errors 
-    if(userData.eMoneyNumber.length === 0){
-      errors.eMoneyNumber = 'Can\'t be blank'
-    }
-    else if(!/\d{9}/g.test(userData.eMoneyNumber)){  
-      errors.eMoneyNumber = 'Invalid number'
-    }
-
-    //eMoney pin errors 
-    if(userData.eMoneyPin.length === 0){
-      errors.eMoneyPin = 'Can\'t be blank'
-    }
-    else if(!/\d{4}/g.test(userData.eMoneyPin)){  
-      errors.eMoneyPin = 'Invalid PIN'
-    }
-
-    console.log(errors)
-    return errors
-  }
-
-  function handleSubmit(e){
-    let p = handleValidation()    
-    setError(p)  
-    if(_.isEqual(p,initialError)){
-      toggleSuccessfulOrderWindow()          
-    }
-  }
-
-  function goBackToCheckout(){
-    setError(initialError)
+  
+   function goBackToCheckout(){
     toggleCheckoutWindow()
     navigate(-1)
   }
-                                           
+        
+
+
+
   return (
     <div className='checkout-form'>
       <p onClick={goBackToCheckout} className='color-gray cursor-pointer checkout-form-go-back'>Go back</p>
@@ -173,106 +52,96 @@ export default function CheckoutForm() {
           <h6 className='color-accent subtitle'>billing details</h6>
           <div className='form-billing-details'>
               <FormElement  name='fullName'
-                            data={userData.fullName}
+                            data={formik.values.fullName}
                             label='Name'
-                            error={error.fullName}
+                            error={formik.errors.fullName}
                             placeholder='Alexei Ward'
-                            handleChange={handleChange} /> 
+                            handleChange={formik.handleChange} /> 
               <FormElement  name='email'
-                            data={userData.email}
+                            data={formik.values.email}
                             label='Email'
-                            error={error.email}
+                            error={formik.errors.email}
                             placeholder='alexei@mail.com'
-                            handleChange={handleChange} />       
+                            handleChange={formik.handleChange} />       
               <FormElement  name='phone'
-                            data={userData.phone}
+                            data={formik.values.phone}
                             label='Phone number'
-                            error={error.phone}
+                            error={formik.errors.phone}
                             placeholder='+1 202-555-0136'
-                            handleChange={handleChange} />    
+                            handleChange={formik.handleChange} />    
           </div>
           <h6 className='color-accent subtitle'>shipping info</h6>
               <FormElement  name='address'
-                          data={userData.address}
+                          data={formik.values.address}
                           label='Address'
-                          error={error.address}
+                          error={formik.errors.address}
                           placeholder='1137 Williams Avenue'
-                          handleChange={handleChange} /> 
+                          handleChange={formik.handleChange} /> 
           <div className='form-shipping-info'>
               <FormElement  name='zipCode'
-                            data={userData.zipCode}
+                            data={formik.values.zipCode}
                             label='ZIP code'
-                            error={error.zipCode}
+                            error={formik.errors.zipCode}
                             placeholder='10001'
-                            handleChange={handleChange} />   
+                            handleChange={formik.handleChange} />   
               <FormElement  name='city'
-                            data={userData.city}
+                            data={formik.values.city}
                             label='City'
-                            error={error.city}
+                            error={formik.errors.city}
                             placeholder='New York'
-                            handleChange={handleChange} /> 
+                            handleChange={formik.handleChange} /> 
               <FormElement  name='country'
-                            data={userData.country}
+                            data={formik.values.country}
                             label='Country'
-                            error={error.country}
+                            error={formik.errors.country}
                             placeholder='United States'
-                            handleChange={handleChange} /> 
+                            handleChange={formik.handleChange} /> 
           </div>
           <h6 className='color-accent subtitle'>payment details</h6>
           <fieldset>        
             <div className='form-payment-method'>
               {/*Payment method error message */}
-              <div className={`${error.paymentMethod !== errorPlaceholder ? 'checkout-form-label error-text' : 'checkout-form-label'}`}><label htmlFor='fullName'>Payment method</label><p className={`${ error.paymentMethod !== errorPlaceholder ? 'error-text show' : 'error-text hide'}`}>{error.country}</p></div>
+              <div className={`${formik.errors.paymentMethod  ? 'checkout-form-label error-text' : 'checkout-form-label'}`}><label htmlFor='fullName'>Payment method</label><p className={`${ formik.errors.paymentMethod  ? 'error-text show' : 'error-text hide'}`}>{formik.errors.country}</p></div>
               <div className='payment-methods'>
-              <div className={`${error.paymentMethod && error.paymentMethod !== errorPlaceholder ? 'checkout-form-label error-text show' : 'checkout-form-label error-text hide'}`} ><p>{error.paymentMethod}</p></div>
-                <div className={`${userData.paymentMethod &&  !error.paymentMethod === 'eMoney' ? 'radio-button border-accent' : error.paymentMethod  && error.paymentMethod !== errorPlaceholder  ? 'radio-button input-error' : 'radio-button'}`}>
-                  <label htmlFor='eMoney'  className='radio-label'>e-Money</label>
-                  <input
-                         id='eMoney'
-                         name='paymentMethod'
-                         value='eMoney'
-                         type='radio'
-                         checked={userData.paymentMethod === 'eMoney'}
-                         onChange={handleChange}
-                         className={`${error.paymentMethod && error.paymentMethod !== errorPlaceholder ? 'input-error radio-button-payment-method' : 'radio-button-payment-method'}`}
-                         />
-                </div>
-                <div className={`${userData.paymentMethod &&  !error.paymentMethod === 'cashOnDelivery' ? 'radio-button border-accent' : error.paymentMethod  && error.paymentMethod !== errorPlaceholder  ? 'radio-button input-error' : 'radio-button'}`}>
-                  <label htmlFor='cashOnDelivery'  className='radio-label'>Cash on delivery</label>
-                  <input
-                         id='cashOnDelivery'
-                         name='paymentMethod'
-                         value='cashOnDelivery'
-                         type='radio'
-                         checked={userData.paymentMethod === 'cashOnDelivery'}
-                         onChange={handleChange}
-                         className={`${error.paymentMethod && error.paymentMethod !== errorPlaceholder ? 'input-error radio-button-payment-method' : 'radio-button-payment-method'}`}
-                         />
-                </div>
+              <div className={`${formik.errors.paymentMethod  ? 'checkout-form-label error-text show' : 'checkout-form-label error-text hide'}`} ><p>{formik.errors.paymentMethod}</p></div>
+              <FormRadioButtonElement
+                            radioValue='eMoney'
+                            name='paymentMethod'
+                            data={formik.values.paymentMethod}
+                            label='e-Money'
+                            error={formik.errors.paymentMethod}
+                            handleChange={formik.handleChange} />       
+              <FormRadioButtonElement
+                            radioValue='cashOnDelivery'
+                            name='paymentMethod'
+                            data={formik.values.paymentMethod}
+                            label='Cash on delivery'
+                            error={formik.errors.paymentMethod}
+                            handleChange={formik.handleChange} />  
               </div>
             </div>        
           </fieldset>
             <div className='form-payment-numbers'>
               <FormElement  name='eMoneyNumber'
-                            data={userData.eMoneyNumber}
+                            data={formik.values.eMoneyNumber}
                             label='e-Money number'
-                            error={error.eMoneyNumber}
+                            error={formik.errors.eMoneyNumber}
                             placeholder='238521993'
-                            handleChange={handleChange}
+                            handleChange={formik.handleChange}
                             additionalClass = 'payment-number'/> 
               <FormElement  name='eMoneyPin'
-                            data={userData.eMoneyPin}
+                            data={formik.values.eMoneyPin}
                             label='e-Money PIN'
-                            error={error.eMoneyPin}
+                            error={formik.errors.eMoneyPin}
                             placeholder='6891'
-                            handleChange={handleChange}
+                            handleChange={formik.handleChange}
                             additionalClass = 'payment-number'/> 
             </div>
         </div>
           <div className='checkout-form-desktop-summary'>
             <h6 className='checkout-form-text-summary'>summary</h6>
             <CheckoutFormSummary />
-            <button onClick={handleSubmit} className='btn-accent'>continue & pay</button>
+            <button onClick={formik.handleSubmit} className='btn-accent'>continue & pay</button>
           </div>
       </div>
 
